@@ -5,11 +5,14 @@ import Constants from 'expo-constants';
 import theme from '../theme';
 import AppBarTab from './AppBarTab';
 
+const PADDING = 20;
+
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: Constants.statusBarHeight,
+    paddingTop: Constants.statusBarHeight + PADDING,
+    paddingBottom: PADDING,
+    paddingHorizontal: PADDING,
     backgroundColor: theme.colors.textPrimary,
-    paddingHorizontal: 20,
   },
   // ...
 });
