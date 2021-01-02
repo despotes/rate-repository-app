@@ -1,5 +1,35 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View, StyleSheet } from 'react-native';
+import theme from '../theme';
+
+import Avatar from './Avatar';
+import Count from './Count';
+import Text from './Text';
+
+const styles = StyleSheet.create({
+  container: {
+    padding: 20,
+  },
+  row: { flexDirection: 'row' },
+  description: {
+    marginHorizontal: 10,
+    flexShrink: 1,
+  },
+  language: {
+    backgroundColor: theme.colors.primary,
+    alignSelf: 'flex-start',
+    padding: 5,
+    borderRadius: 5,
+  },
+  marginBot: {
+    marginBottom: 5,
+  },
+  counters: {
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: 10,
+  },
+});
 
 const RepositoryItem = ({ details }) => {
   const {
@@ -10,17 +40,37 @@ const RepositoryItem = ({ details }) => {
     stargazersCount,
     ratingAverage,
     reviewCount,
+    ownerAvatarUrl,
   } = details;
 
   return (
-    <View>
-      <Text>Fullname: {fullName}</Text>
-      <Text>Description: {description}</Text>
-      <Text>Language: {language}</Text>
-      <Text>Stars: {stargazersCount}</Text>
-      <Text>Forks: {forksCount}</Text>
-      <Text>Reviews: {reviewCount}</Text>
-      <Text>Rating: {ratingAverage}</Text>
+    <View style={styles.container}>
+      <View style={styles.row}>
+        <View>
+          <Avatar src={ownerAvatarUrl} />
+        </View>
+        <View style={styles.description}>
+          <Text
+            fontSize="subheading"
+            fontWeight="bold"
+            style={styles.marginBot}
+          >
+            {fullName}
+          </Text>
+          <Text fontSize="body" color="textSecondary" style={styles.marginBot}>
+            {description}
+          </Text>
+          <Text color="white" style={styles.language}>
+            {language}
+          </Text>
+        </View>
+      </View>
+      <View style={[styles.row, styles.counters]}>
+        <Count text="Stars" count={stargazersCount} />
+        <Count text="Forks" count={forksCount} />
+        <Count text="Reviews" count={reviewCount} />
+        <Count text="Rating" count={ratingAverage} />
+      </View>
     </View>
   );
 };
