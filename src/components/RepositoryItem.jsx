@@ -9,6 +9,7 @@ import Text from './Text';
 const styles = StyleSheet.create({
   container: {
     padding: 20,
+    backgroundColor: theme.colors.white,
   },
   row: { flexDirection: 'row' },
   description: {
