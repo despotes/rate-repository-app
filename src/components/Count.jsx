@@ -4,7 +4,8 @@ import { StyleSheet, View } from 'react-native';
 import Text from './Text';
 
 const Count = ({ text, count }) => {
-  const formattedCount = count > 1000 ? (count / 1000).toFixed(1) + 'k' : count;
+  const formattedCount =
+    count > 1000 ? +(count / 1000).toFixed(1) + 'k' : count;
 
   return (
     <View style={styles.container}>
