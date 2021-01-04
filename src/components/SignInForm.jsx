@@ -8,16 +8,12 @@ import Text from './Text';
 const SignInForm = ({ onSubmit }) => {
   return (
     <View style={styles.container}>
-      <FormikTextInput
-        name="username"
-        placeholder="Username"
-        style={styles.spaceBottom}
-      />
+      <FormikTextInput name="username" placeholder="Username" mB="medium" />
       <FormikTextInput
         name="password"
         placeholder="Password"
         secureTextEntry
-        style={styles.spaceBottom}
+        mB="medium"
       />
       <TouchableWithoutFeedback onPress={onSubmit}>
         <Text
@@ -46,8 +42,5 @@ const styles = StyleSheet.create({
     borderColor: theme.colors.primary,
     borderRadius: 5,
     textAlign: 'center',
-  },
-  spaceBottom: {
-    marginBottom: 10,
   },
 });

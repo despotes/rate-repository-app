@@ -5,6 +5,7 @@ const theme = {
     primary: '#0366d6',
     white: '#fff',
     lightgray: '#E1E5E8',
+    danger: '#d73a4a',
   },
   fontSizes: {
     body: 14,
