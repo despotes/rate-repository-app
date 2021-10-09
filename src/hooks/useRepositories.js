@@ -32,7 +32,7 @@ const useRepositoriesGQL = () => {
     fetchPolicy: 'cache-and-network',
   });
 
-  return { repositories: data.repositories, loading, error };
+  return { repositories: data?.repositories, loading, error };
 };
 
 export default useRepositoriesGQL;

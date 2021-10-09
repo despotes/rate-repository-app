@@ -84,7 +84,7 @@ const RepositoryList = () => {
     );
   }
 
-  const repositoriesNodes = repositories
+  const repositoriesNodes = repositories.edges
     ? repositories.edges.map((edge) => edge.node)
     : [];
 
