@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
+import { useQuery } from '@apollo/client';
+import { GET_REPOSITORIES } from '../graphql/queries';
 
+// eslint-disable-next-line no-unused-vars
 const useRepositories = () => {
   const [repositories, setRepositories] = useState();
   const [loading, setLoading] = useState(false);
@@ -24,4 +27,12 @@ const useRepositories = () => {
   return { repositories, loading, refetch: fetchRepositories };
 };
 
-export default useRepositories;
+const useRepositoriesGQL = () => {
+  const { data, loading, error } = useQuery(GET_REPOSITORIES, {
+    fetchPolicy: 'cache-and-network',
+  });
+
+  return { repositories: data.repositories, loading, error };
+};
+
+export default useRepositoriesGQL;

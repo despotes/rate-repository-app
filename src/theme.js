@@ -10,8 +10,8 @@ const theme = {
     danger: '#d73a4a',
   },
   fontSizes: {
-    body: 14,
-    subheading: 16,
+    body: 16,
+    subheading: 18,
   },
   fonts: {
     main: Platform.select({

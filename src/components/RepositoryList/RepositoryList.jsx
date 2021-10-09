@@ -1,14 +1,21 @@
 import React from 'react';
-import { FlatList, View, StyleSheet } from 'react-native';
+import { FlatList, View, StyleSheet, ActivityIndicator } from 'react-native';
+
+import Text from '../Text';
 import RepositoryItem from './RepositoryItem';
 
-import useRepositories from '../hooks/useRepositories';
-import theme from '../theme';
+import theme from '../../theme';
+import useRepositoriesGQL from '../../hooks/useRepositories';
 
 const styles = StyleSheet.create({
   separator: {
     height: 10,
     backgroundColor: theme.colors.lightgray,
+  },
+  center: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 
@@ -62,7 +69,20 @@ const styles = StyleSheet.create({
 const ItemSeparator = () => <View style={styles.separator} />;
 
 const RepositoryList = () => {
-  const { repositories } = useRepositories();
+  const { repositories, loading, error } = useRepositoriesGQL();
+
+  if (error) {
+    console.log('error', error);
+    return <Text>Error: {error.message}</Text>;
+  }
+
+  if (loading) {
+    return (
+      <View style={styles.center}>
+        <ActivityIndicator size="large" />
+      </View>
+    );
+  }
 
   const repositoriesNodes = repositories
     ? repositories.edges.map((edge) => edge.node)
